@@ -1,0 +1,198 @@
+	
+####### Graph 
+		Graph<String> g=new Graph();
+		g=g.addVertex("Madurai");
+		g=g.addVertex("Chennai");
+		g=g.addVertex("Trichy");
+		g=g.addVertex("Kanyakumari");
+		g=g.addVertex("Ooty");
+		g=g.addVertex("Kodaikanal");
+		g=g.addVertex("Hyderabad");
+		g.addEdge("Madurai","Trichy",150);
+		g.addEdge("Madurai","Kodaikanal",120);
+		g.addEdge("Madurai","Ooty",270);
+		g.addEdge("Trichy","Chennai",400);
+		g.addEdge("Madurai","Hyderabad",700);
+		List tmp=g.getNear("Madurai");
+		tmp.display();
+		g.display();
+		System.out.println(g.isReachable("Madurai","Trichy"));
+		System.out.println(g.isReachable("Madurai","Hyderabad"));
+		
+###### Linked List
+
+		List list=new List();
+		list.insert_begin(1);
+		list.insert_begin(2);
+		list.insert_begin(3);
+		list.insert_pos(5,3);
+		list.insert_pos(9,4);
+		list.delete_last();
+		list.display();
+		
+				List list1=new List();
+		list1.insert_begin(1);
+		list1.insert_begin(2);
+		list1.insert_begin(3);
+		List list2=new List();
+		list2.insert_begin(4);
+		list2.insert_begin(5);
+		list2.insert_begin(6);
+		list2.insert_begin(8);
+		list2.insert_begin(10);
+		list2.display();
+		list1.display();
+		list2.merge(list1).display();
+########### Hanoi
+
+		Hanoi h=new Hanoi(3);
+		h.setSrc('A');
+		h.setDest('C');
+		h.setTmp('B');
+		h.startMove();
+		h.discs();
+		
+	
+########## Stack
+
+		Stack s=new Stack();
+		s.push(1);
+		s.display();
+		s.push(1);
+		s.display();
+		s.pop();
+		s.display();
+		s.pop();
+		s.display();
+		s.sortStackWithStack();
+		
+############ BST
+
+		BST tree=new BST();
+		tree.insert(4);
+		tree.insert(3);
+		tree.insert(5);
+		tree.insert(2);
+		tree.insert(6);
+		tree.insert(1);
+		tree.insert(7);
+		tree.insert(0);
+		tree.insert(12);
+		tree.insert(14);
+		tree.insert(2);
+		tree.inorder();
+		tree.preorder();
+		tree.postorder();
+		System.out.println(tree.minheight());
+		System.out.println(tree.isBalanced());
+		tree.display();
+		
+############  Number
+			Number n=new Number(13);
+			System.out.println(n.isPrime());
+			System.out.println(Number.nextPrime(201));
+			
+		Number n=new Number(45);
+		System.out.println(n.lcm(60));
+		System.out.println(n.gcd(10));
+		
+				String expr="12*15+1/2";
+		Stack<String> s=new Stack();
+		int result=s.evalExpr(expr);
+		s.display();
+		Number n=new Number(1234);
+		System.out.println(n.reverse());
+			
+########### HashMap
+			
+					HashMap h=new HashMap();
+		h.put(13);
+		h.put(1);
+		h.put(2);
+		h.put(64);
+		h.put(54);
+		h.put(3);
+		h.display();\
+		
+################ Heap
+
+		Heap h=new Heap();
+		h.insert(1);
+		h.insert(5);
+		h.insert(3);
+		h.insert(7);
+		h.insert(2);
+		h.insert(4);
+		h.insert(9);
+		h.insert(11);
+		h.display();
+		int tmp;
+		while((tmp=h.deleteMin())!=-1)
+		{
+			System.out.println(" Deleted Value is:"+tmp+"\n");
+			h.display();
+			System.out.println(" Tail is:"+h.Last);
+		}
+		
+				Heap h=new Heap();
+		
+		for(int i=1;i<20;i++)
+			h.insert(i);
+				h.display();
+		for(int i=1;i<20;i++)
+		{
+			System.out.println(h.deleteMin());
+		}
+		
+########### Sorting
+
+		int range=20;
+		Sorting s=new Sorting(range);
+		s.shuffle();
+		s.display();
+		System.out.println(s.insertionSort());
+		s.display();
+		s.shuffle();
+		s.display();
+		System.out.println(s.bubbleSort());
+		s.display();
+		
+				s.shuffle();
+		s.display();
+		System.out.println(s.selectionSort());
+		s.display();
+
+		
+				Sorting s=new Sorting(20);
+		s.display();
+		for(int i=0;i<30;i++)
+		System.out.println(s.findValue(i));
+		
+				Sorting s=new Sorting(20);
+		s.shuffle();
+		s.display();
+		s.heapSort();
+		s.display();
+
+		Sorting s=new Sorting(20);
+		s.negShuffle();
+		s.display();
+		System.out.println(s.maxSubseq());
+############### KString
+
+			KString k=new KString("karthik");
+		System.out.println(k.isSubstring("karthikselvakumarkarth"));
+		k.printReverse();
+		System.out.println(k.deleteSet("aeiou"));
+
+############### Queue
+
+		Queue q=new Queue();
+		for(int i=0;i<10;i++)
+			q.enq(i);
+		q.display();
+		for(int i=0;i<10;i++)
+		{
+			q.Qpop();
+			q.display();	
+		}
