@@ -6,10 +6,7 @@ public class Main
 		for(int i=0;i<10;i++)
 			s.push(i);
 		s.display();
-		for(int i=0;i<10;i++)
-		{
-			System.out.println(s.Sdeq());
-		}
+		s.sortStackWithStack();
 	}
 }
 
@@ -87,27 +84,70 @@ class List<Type>
 		traverse.next=null;
 		return tmp;
 	}
-	/*
+	
+	int compare(int Num1,int Num2)
+	{
+		return Num1-Num2;
+	}
+	
+	int min(int num1,int num2)
+	{
+		if(num1<num2)
+			return num1;
+		return num2;
+	}
+	int compare(String str1,String str2)
+	{
+		for(int i=0;i<min(str1.length(),str2.length());i++)
+		{
+			if(str1.charAt(i)-str2.charAt(i)==0)
+				continue;
+			else
+				return str1.charAt(i)-str2.charAt(i);
+		}
+		return 0;
+	}
+	boolean isGreater(Object tdata1,Object tdata2)
+	{
+		String data1=tdata1.toString();
+		String data2=tdata2.toString();
+		try
+		{
+			int Num1=Integer.parseInt(data1);
+			int Num2=Integer.parseInt(data2);
+			if(compare(Num1,Num2)>0)
+				return true;
+		}
+		catch(Exception e)
+		{
+			if(compare(data1,data2)>0)
+				return true;
+		}
+		
+		return false;
+	}
+	
 	void bubblesort()
 	{
 		
-		List traverse=this;
+		List traverse=this.next;
 		while(traverse!=null)
 		{
-			List start=this;
+			List start=this.next;
 			while(start.next!=null)
 			{
-				if(start.data>start.next.data)
+				if(start.isGreater(start.data,start.next.data))
 				{
-					int tem=start.data;
+					Object tmp=start.data;
 					start.data=start.next.data;
-					start.next.data=tem;
+					start.next.data=tmp;
 				}
 				start=start.next;
 			}
 			traverse=traverse.next;
 		}
-	}*/
+	}
+	
 	
 	public void display()
 	{
@@ -251,24 +291,16 @@ class Stack<Type> extends List
 		return null;
 	}
 	
-	int getlength()
+	public int getlength()
 	{
 		return length;
 	}
-	/*
+	
 	void sortStackWithStack()
 	{
 		Stack tmp=new Stack();
-		while(this.peek()!=null)
-		{
-			Integer data=(Integer)this.pop();
-			while(((Integer)tmp.peek().)intValue()==null||data.intValue()>((Integer)tmp.peek()).intValue())
-			{
-				this.push(tmp.pop());
-			}
-			tmp.push(data);
-		}
-	} */
+		
+	} 
 	
 	void reverse()
 	{
@@ -1387,6 +1419,23 @@ class KString
 		}
 		return Result.toString();
 	}
+	
+	String reverseSentence()
+	{
+		String sent=this.Data;
+		String result="",tmp="";
+		for(int i=0;i<sent.length();i++)
+		{
+			if(sent.charAt(i)!=' ')tmp+=sent.charAt(i);
+			else
+			{
+				KString n=new KString(tmp);
+				result+=" "+n.reverse();
+				tmp="";
+			}
+		}
+		return result;
+	}
 }
 
 class Trie
@@ -1423,6 +1472,8 @@ class Trie
 		}
 		return 1;
 	}
+	
+	
 			
 	void display()
 	{

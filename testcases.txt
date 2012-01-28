@@ -43,6 +43,14 @@
 		list2.display();
 		list1.display();
 		list2.merge(list1).display();
+		
+				List list=new List();
+		list.insert_begin("karthik");
+		list.insert_begin("amitah");
+		list.insert_begin("rakesh");
+		list.display();
+		list.bubblesort();
+		list.display();
 ########### Hanoi
 
 		Hanoi h=new Hanoi(3);
@@ -195,4 +203,14 @@
 		{
 			q.Qpop();
 			q.display();	
+		}
+
+########## Stack
+				Stack s=new Stack();
+		for(int i=0;i<10;i++)
+			s.push(i);
+		s.display();
+		for(int i=0;i<10;i++)
+		{
+			System.out.println(s.Sdeq());
 		}
