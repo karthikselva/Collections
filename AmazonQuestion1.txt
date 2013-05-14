@@ -1,0 +1,135 @@
+Round 1:
+
+1. There are n petrol bunks arranged in circle. Each bunk is separated from the rest by a certain distance. You choose some mode of travel which needs 1litre of petrol to cover 1km distance. You can't infinitely draw any amount of petrol from each bunk as each bunk has some limited petrol only. But you know that the sum of litres of petrol in all the bunks is equal to the distance to be covered.
+ie let P1, P2, ... Pn be n bunks arranged circularly. d1 is distance between p1 and p2, d2 is distance between p2 and p3. dn is distance between pn and p1.Now find out the bunk from where the travel can be started such that your mode of travel never runs out of fuel.
+
+2. There are 25 horses among which you need to find out the fastest 3 horses. You can conduct race among at most 5 to find out their relative speed. At no point you can find out the actual speed of the horse in a race. Find out how many races are required to get the top 3 horses.
+
+3. Remove a node from a doubly linked list.
+
+4. Implement char* itoa(int) function.
+
+Round 2:
+
+1. Merging 2 binary trees. (I said O(n log n log n) and he was satisfied)
+
+2. A tree is represented in a matrix form such that A[i,j] = 1 if j is the ancestor of i. Otherwise A[i,j] = 0. Given this construct a normal binary search tree.
+
+3. A 2D array is such that each row in it is in ascending order and each column is in ascending order. How will you search for an element in this array? (O(n) is enough)
+
+Round 3 (Design Round)
+
+1. A city is represented as a grid where each line represents a road. As it is a grid, all the horizontal roads intersect with all vertical roads. A bus may enter the city in the left-bottom junction with a North seeing face (direction of the bus). You can move to any of the intersections with a proper control string. Eg "LLMMR" L, R, M representes that the bus has to be turned to its left, right and then has to move one step forward and reach the next intersection. How will you design this scenario? What classes are needed? What member variables and functions are needed?
+
+2. How will you design google map?
+
+3. Java has an inbuilt hashmap class. It usually takes object id as a reference to hash the key values. Instead how could you make it take the state of the object (if both the objects have same set of values for all the member variables, they are in the same state) to hash the key?
+hashmap.hash(new foo(), "xyz");
+hashmap.hash(new foo(), "xyz");
+    Both of them should hash into the same. How will you do that?
+
+Round 4
+
+1. Given 2 billion numbers and 2 MB RAM, how will you sort the numbers? (He wanted me to discuss the external sort)
+
+2. How will you find the first k smallest elements in a given unsorted array in O(n) at the worst case?
+
+3. Given a sorted array A, how will you find out elements in that array (a,b,c) such that the sum of the squares of a and b is the square of c? You need to do it in O(n^2)
+madankumarrajan 
+Sunday, April 27, 2008
+ 
+Q:A tree is represented in a matrix form such that A[i,j] = 1 if j is the ancestor of i. Otherwise A[i,j] = 0. Given this construct a normal binary search tree.
+
+
+We can do it by using recursion. Every time, we will have to find out the row which contains all 0's and select that node as a root at that level. Let it be ith node.Call recursively for 1 to i-1 and set returned pointer to left child. Similarly, call recursively for i + 1 to n (I assume that the nodes are from 1 to n) and set returned pointer to right child.
+
+Complexity in average case would be O(n^2 log n) since at every level of recursion, we will traverse whole matrix in worst case, and if it happens to be balanced tree, there would be log n levels of recursion. In the worst case, it complexity will be O(n^3).
+dark horse
+Tuesday, April 29, 2008
+ 
+25 horses and race question: 6 races
+Manish 
+Monday, May 12, 2008
+ 
+Round 4
+
+1. Given 2 billion numbers and 2 MB RAM, how will you sort the numbers? (He wanted me to discuss the external sort)
+
+Radix sorts are cool.
+
+
+2. How will you find the first k smallest elements in a given unsorted array in O(n) at the worst case?
+
+You can only really do this in O(n * log(k)) time, worst case, but it'e easy enough.
+
+
+3. Given a sorted array A, how will you find out elements in that array (a,b,c) such that the sum of the squares of a and b is the square of c? You need to do it in O(n^2) 
+
+This is actually a pretty hard problem.  Of course, you start by just squaring all of the numbers to reduce this to the 3SUM problem, but it's unlikely that someone will dervie the answer to 3SUM in O(N^2) in a interview, though they might remember it.
+Skorj 
+Wednesday, May 14, 2008
+ 
+For the horse one, surely it's 8 races?
+Races all the horses in five races to find the top five horses in each group. Race all the first place horses to order the groups from a to e. Let's call the first place in group a 1a and the fifth place in group e 5e.
+1a has won the whole competition. You then need to see if 1b beat 2a through 5a.
+If 1b beats all of 2a through 5a then you need to race 1c against 2a through 5a. If 1b didn't win the you take the top two from the 7th race and they are second/third place.
+So it's either 7 or 8 races depending on the outcome of the 7th race.
+MikeD 
+Thursday, May 15, 2008
+ 
+Horse Race it will take 6 steps to identify top horses
+abhi 
+Monday, June 02, 2008
+ 
+2. How will you find the first k smallest elements in a given unsorted array in O(n) at the worst case?
+
+You can only really do this in O(n * log(k)) time, worst case, but it'e easy enough.
+
+======================
+
+This can be solved in O(n) time.  You can find out the position of kth element in an array using the  "median of medians" algorithm.  http://en.wikipedia.org/wiki/Selection_algorithm#Linear_general_selection_algorithm_-_.22Median_of_Medians_algorithm.22  
+
+Once we have the kth element, we can just iterate through the array and print elements that are smaller than the kth element to get the k smallest elements. :)
+Ramachandren  
+Wednesday, June 04, 2008
+ 
+A 2D array is such that each row in it is in ascending order and each column is in ascending order. How will you search for an element in this array? (O(n) is enough)
+
+
+whats the solution to the above problem?
+praveen
+Thursday, June 19, 2008
+ 
+It will take 11-12 rounds to identify fastest 3 out of 25. Five rounds of 5 each, will establish top 3 out of each of 5 groups. Three rounds of 5 each for these 15 (3x5) will leave top 9(3x3). Two more rounds will reduce the number to 6 (2x3). Two more rounds will be needed to get top 3 out of 25. Total 5 + 3 + 2 + 2 rounds. Looking at it in other way, we need to eliminate 22. One round can eliminate 2. So at least 11 rounds are required anyway.
+Vinayak Sapre 
+Tuesday, June 24, 2008
+ 
+The answer above is wrong since it does not use the results of earlier races. The correct answer is 8 races. round 1: 5x5 - 5 races, yielding top 3 from each.
+round 2: one race among the winners of 5 groups - eliminates 2 groups, leaving 9.(3 x 3)
+round 3: one race of top 2 from two groups and one from third. -  eliminates at least one group and one person from remaining two groups.
+round 4: final race if third group person was in top 3 in round 3.
+
+This is the same as the solution described earlier by another person.
+Vinayak Sapre 
+Tuesday, June 24, 2008
+ 
+The answer to horses question
+
+You have to take into account that any group of 5 horses is fastest among all 25 horses :)
+
+
+step1.  Take 5 horse for race
+step2  take topper of step one and next 4 horses.
+After the race you know relative speed  of these nine horses
+
+step3  Take  topper of step two and next 4 horses.
+ After the race you know relative speed  of these 13 horses
+
+step4  Take  topper of step three and next 4 horses.
+ After the race you know relative speed  of these 17 horses
+
+step5  Take  topper of step four and next 4 horses.
+ After the race you know relative speed  of these 21 horses
+
+step4  Take  topper of step five and next 4 horses.
+ After the race you know relative speed  of these 25 horses

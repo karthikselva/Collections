@@ -1,0 +1,142 @@
+ random link list is a linked list where every node contains 2 links, 
+one like a normal node which points to the next node. 
+The other link points to a random node in the list, even itself. 
+You are to write a function to perform a deep copy of this random link list.
+
+
+ckm 
+guest	
+Posted 1 year ago # 
+
+
+Let the node be with 2 pointers next and random.
+
+1. first create another list with next pointers pointing to next node. Lets call it L2 and the original list L1.
+
+2. Now point next of 1st element in L1 to 1st element of L2, next of 2nd element in L1 to 2nd element in L2 and so on.
+
+3. Then point random of 1st element in L2 to 1st element in L1, random of 2nd element in L2 to 2nd element in L1 and so on.
+
+4. Now 1st node random of L2 = 1st node random (which is 1st node in L1) -> random ->next. Do this for all elements 
+and you get your duplicate list.
+
+
+Amazon
+Hi geeks,
+I had Amazon written test today. These were the questions
+
+Section 1: (45 min)
+1. What is the BEST-WORST case time to add and remove elements from a queue that has been implemented with the help of 2 stacks.
+2. There are 4 people in a closed room and you are waiting outside to enter into the room. You can enter only when one of them opens the door. The probability that somebody will open the door is 1/2. Now what is the probability that the door will be opened so that you can go inside?
+3. Given an integer array A[], what preprocessing you need to do so that when given i and j such that i <= j, you can tell in O(1) time the number of elements in the array having values between and including i and j.
+4. Processing times for 5 processes were given. You need to find out the minimum average waiting time the processes have to wait in order to get executed if TWO PROCESSORS are given.
+5. The following figure has many squares. Remove only 4 sticks so that there are only 9 squares possible. The figure was like squares arranged in 3x3 form.
+6. How many regions (open or closed) can n straight lines give at the maximum?
+7. A C++ code was given and was asked to debug. The bug was, an array of a derived class object was declared. Base class pointer was made to point to the array. But to traverse the array, base_ptr++ was done which gives wrong output.
+8. A graph is given. You need to design a data structure with minimum space complexity such that it does the follows
+ --> Finds whether nodes u and v have a path in between them in O(1) time.
+ --> Finds whether there is a path of length l between u and v in O(l) time.
+9. There are 2 tables with 16 and 60 tuples respectively. Column A in table 1 is its primary key, whereas Column A in table 2 is the foreign key referring to table 1. Now find out the Minimum and Maximum number of tuples that are possible due to a natural join.
+10. A SQL query was given and was asked to find out what it does.
+11. Employee(Company Name, Employee name, Salary) is a table. You need to find out the company with maximum number of employees.
+12. Find out what this function does.
+int foo(int n) {
+      int t,count=0;
+      t=n;
+      while(n)
+      {
+          count=count+1;
+          n=(n-1)&t;
+      }
+      return count;
+}
+13. Given a graph's shortest path algorithm, how can you make use of it to find the second shortest path?
+14. What does the following function return?
+int foo(int n) {
+  int d = n, s = n;
+  while (d) {
+    d = floor(d/2);
+    s -= d;
+  }
+  return s;
+}
+15. A number of steps are there. You can go to step n either from step n-1 or from step n-2. In how many ways can you go to step n?
+
+Section 2: (30 min)
+1. Integer has been represented in linked list. Eg. 7541 has been represented as 7->5->4->1 with 4 nodes each having a digit. Given 2 such linked lists, you need to compute the sum of them.
+2. Given a binary tree, you need to find out the diameter. Diameter is defined as the number of edges in the longest path that may exist between any 2 nodes of the tree.
+madankumarrajan 
+Thursday, April 17, 2008
+ 
+Correction in the 8th question:
+b)Finds whether there is a path of length k between u and v in O(k) time.
+madankumarrajan 
+Thursday, April 17, 2008
+ 
+whats the solution for 13 th question...
+nihar
+Friday, April 18, 2008
+ 
+Question #15, pasted here, is unclear! 
+
+#15. A number of steps are there. You can go to step n either from step n-1 or from step n-2. In how many ways can you go to step n?
+
+There is some vagueness here.  How many steps are given?  From what step do you begin to go to step n?
+
+I have tried to reconstruct the question.  Here it is:
+
+Let there be an infinite number of steps, or, if you will, nodes, on a straight line: 
+
+*-----*-----*-----*-----*-----*-----*-- . . . .
+0    1    2                n
+
+You can only move from left to right; i.e., from a lower step to a higher one.  For any k, if you are at node k, then you can either jump to node k+1 or node k+2, only.  Starting at node 0, in how many ways can you reach node n.
+
+Answer: Fibonacci!
+natian 
+Friday, April 18, 2008
+ 
+Answer to #6. 
+
+First the question:
+
+6. How many regions (open or closed) can n straight lines give at the maximum?
+
+Answer: 1+n(n+1)/2.
+
+Here's why:
+
+Let f(n) denote the number of regions for n lines no three of which coincide in one point. 
+ This latter condition will guarantee the maximum. Obviously, f(0)=1, f(1)=2, f(2)=4, f(3)=7, etc.
+
+Now, given n-1 lines, there are already f(n-1) regions. With the introduction of the n-th line, 
+imagine the points of intersection of the pre-existing n-1 lines fall on one side of the n-th line. So, 
+on one side of the n-th line -- where the points of intersection lie -- you still have f(n-1) regions,
+ whereas on the other side of the n-th line, you now have n regions. 
+ So, for these n lines before us, the total number f(n) of regions must be equal to f(n-1)+n.
+
+So, f(n)=f(n-1)+n.  With the initial condition(s) given earlier, this gives us f(n)=1+n(n+1)/2. 
+
+Cheers.
+natian 
+Friday, April 18, 2008
+ 
+I dont know if its right place to ask... but i tried posting resume on amazon-india career site twice but got no reply.
+
+Can you suggest a better channel.
+
+thanks
+
+Friday, April 18, 2008
+ 
+For Q.13, since it's not mentioned whether we can modify the graph or not, I assume, we can. So, we can proceed this way:
+We will run the shortest path algo to get the shortest path. Then remove first edge on this shortest path and run the algo 
+again to get the new shortest path. Then put back the first edge and remove the second one and again find out shortest path...
+do it the same way one by one for all edges. Finally, shortest amongst these will be the second shortest path. It should take O(E.T) 
+where E is the no. of edges on the shortest path, T is the time taken to run the shortest path algo.
+
+
+http://discuss.techinterview.org/default.asp?interview.11.619669.6
+
+
+
